@@ -13,6 +13,7 @@
     align-content: center;
     align-items: center;
     font-family: 'Exo', sans-serif;
+    position: relative;
     p {
         margin: 0;
         padding: 0;
@@ -24,6 +25,15 @@
         margin: 0 0 20px;
         word-spacing: 15px;
         letter-spacing: 2px;
+        z-index: 99;
+        position: relative;
+    }
+    &__backdrop {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        background-image: linear-gradient(to right bottom, #720103, #83050b, #950912, #a70e18, #b9131f);
+        opacity: 0.2;
     }
     &__day {
         width: 100px;
@@ -59,6 +69,8 @@
         align-items: center;
         color: #fff;
         margin-bottom: 10px !important;
+        z-index: 99;
+        position: relative;
         span {
             &:first-child {
                 font-size: 35px;

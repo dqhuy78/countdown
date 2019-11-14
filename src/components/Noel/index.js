@@ -15,6 +15,7 @@ const Noel = () => {
                 color="white"
                 snowflakeCount={flakeCount}
             />
+            <div className="noel__backdrop" />
             <h1>To Christmas</h1>
             <div className="noel__wraper">
                 <p className="noel__day">

@@ -6,7 +6,7 @@ import useCountDownHook from '../../hooks/useCountDownHook';
 import mp3Sound from './x-mas.mp3';
 
 const Noel = () => {
-    const countdown = useCountDownHook(new Date(2019, 11, 24));
+    const countdown = useCountDownHook(new Date(2020, 11, 24));
     const [flakeCount] = useState(document.documentElement.clientWidth / 5);
 
     return (
@@ -17,7 +17,7 @@ const Noel = () => {
             />
             <div className="noel__backdrop" />
             <h1>To Christmas</h1>
-            <div className="noel__wraper">
+            <div className="noel__wrapper">
                 <p className="noel__day">
                     <span>{countdown.days}</span>
                     <span>days</span>
@@ -35,7 +35,9 @@ const Noel = () => {
                     <span>seconds</span>
                 </p>
             </div>
-            <embed src={mp3Sound} width={0} height={0} loop={true} />
+            <audio autoPlay>
+                <source src={mp3Sound} type="audio/mp3" />
+            </audio>
         </div>
     )
 }

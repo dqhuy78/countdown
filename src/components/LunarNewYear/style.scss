@@ -1,0 +1,250 @@
+.lunar {
+    background-image: url(lunar.jpg);
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    font-family: 'Exo', sans-serif;
+    position: relative;
+    p {
+        margin: 0;
+        padding: 0;
+    }
+    h1 {
+        font-family: 'Spirax', cursive;
+        font-size: 40px;
+        color: #ffffff;
+        margin: 0 0 20px;
+        word-spacing: 15px;
+        letter-spacing: 2px;
+        z-index: 99;
+        position: relative;
+    }
+    &__backdrop {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        background-image: linear-gradient(to right bottom, #720103, #83050b, #950912, #a70e18, #b9131f);
+        opacity: 0.2;
+    }
+    &__day {
+        width: 100px;
+        height: 100px;
+        box-sizing: border-box;
+        border-radius: 100%;
+        border: 3px solid rgba(255, 255, 255, 0.9);
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        color: #ffffff;
+        span {
+            &:first-child {
+                font-size: 35px;
+                font-weight: bold;
+                margin-bottom: -5px;
+            }
+            &:last-child {
+                font-size: 22px;
+            }
+        }
+    }
+    &__day, &__hour, &__minute, &__second {
+        width: 100px;
+        height: 100px;
+        box-sizing: border-box;
+        border-radius: 100%;
+        border: 3px solid rgba(255, 255, 255, 0.9);
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        color: #ffffff;
+        margin-bottom: 10px !important;
+        z-index: 99;
+        position: relative;
+        span {
+            &:first-child {
+                font-size: 35px;
+                font-weight: bold;
+                margin-bottom: -5px;
+            }
+            &:last-child {
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1366px) {
+    .lunar {
+        h1 {
+            font-size: 80px;
+            margin-top: -15px;
+            letter-spacing: 5px;
+        }
+        &__wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            p {
+                margin: 0 15px;
+            }
+        }
+        &__day, &__hour, &__minute, &__second {
+            width: 170px;
+            height: 170px;
+            border-width: 5px;
+            margin-bottom: 0;
+            span {
+                &:first-child {
+                    font-size: 60px;
+                    margin-bottom: -10px;
+                }
+                &:last-child {
+                    font-size: 30px;
+                }
+            }
+        }
+    }
+}
+
+$particles: 100;
+$width: 800;
+$height: 600;
+
+$box-shadow: ();
+$box-shadow2: ();
+@for $i from 0 through $particles {
+    $box-shadow: $box-shadow,
+                random($width)-$width / 2 + px
+                random($height)-$height / 1.2 + px
+                hsl(random(360), 100, 50);
+    $box-shadow2: $box-shadow2, 0 0 #fff
+}
+@mixin keyframes ($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+
+    @-ms-keyframes #{$animationName} {
+        @content;
+    }
+
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+@mixin animation-delay ($settings) {
+    -moz-animation-delay: $settings;
+    -webkit-animation-delay: $settings;
+    -o-animation-delay: $settings;
+    -ms-animation-delay: $settings;
+    animation-delay: $settings;
+}
+
+@mixin animation-duration ($settings) {
+    -moz-animation-duration: $settings;
+    -webkit-animation-duration: $settings;
+    -o-animation-duration: $settings;
+    -ms-animation-duration: $settings;
+    animation-duration: $settings;
+}
+
+@mixin animation ($settings) {
+    -moz-animation: $settings;
+    -webkit-animation: $settings;
+    -o-animation: $settings;
+    -ms-animation: $settings;
+    animation: $settings;
+}
+
+@mixin transform ($settings) {
+    transform: $settings;
+    -moz-transform: $settings;
+    -webkit-transform: $settings;
+    -o-transform: $settings;
+    -ms-transform: $settings;
+}
+
+.lunar > .before, .lunar > .after {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    box-shadow: $box-shadow2;
+    @include animation((1s bang ease-out infinite backwards, 1s gravity ease-in infinite backwards, 5s position linear infinite backwards));
+}
+    
+.lunar > .after {
+    @include animation-delay((1.25s, 1.25s, 1.25s));
+    @include animation-duration((1.25s, 1.25s, 6.25s));
+}
+        
+@include keyframes(bang) {
+    to {
+        box-shadow:$box-shadow;
+    }
+}
+    
+@include keyframes(gravity)  {
+    to {
+        @include transform(translateY(200px));
+        opacity: 0;
+    }
+}
+    
+@include keyframes(position) {
+    0%, 0.9% {
+        margin-top: 0%;
+        margin-left: 0%;
+    }
+    100%, 19.9% {
+        margin-top: 10%;
+        margin-right: 10%;
+    }
+    20%, 29.9% {  
+        margin-top: 15%;
+        margin-left: 20%
+    }
+    30%, 39.9% {  
+        margin-top: 20%;
+        margin-left: -1000px;
+
+    }
+    40%, 49.9% {  
+        margin-top: 10%;
+        margin-left: -300px;
+    }
+    50%, 79.9% {  
+        margin-top: 30%;
+        margin-left: 20%;
+    }
+    80%, 99.9% {  
+        margin-top: 30%;
+        margin-left: 80%;
+    }
+}

@@ -1,13 +1,22 @@
 import React from 'react';
-
-import Noel from './components/Noel';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import routes from './routes';
+import Header from './components/Header';
 
 const App = () => {
 
     return (
         <div className="App">
-            <Noel />
-        </div>
+        <Router>
+            <Header />
+            <Switch>
+                <Route path='/' exact component={routes[0].component} />
+                {routes.map((route, index) => (
+                    <Route key={index} path={route.path} exact component={route.component} />
+                ))}
+            </Switch>
+        </Router>
+    </div>
     );
 }
 

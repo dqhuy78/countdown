@@ -12,7 +12,7 @@ const NewYear = () => {
         calc: (props, i) => ({
           ...props,
           x: (i + 1) * (window.innerWidth / 6) - (i + 1) * 100,
-          y: 500 + Math.random() * 100 - 50 + (i === 2 ? -80 : 0)
+          y: 500 + Math.random() * 100 - 120 + (i === 2 ? -80 : 0)
         })
       }
 

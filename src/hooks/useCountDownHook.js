@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 export default function useCountDownHook(toDate) {
 
-    const [currentdate, setCurrentDate] = useState(new Date());
+    const [currentDate, setCurrentDate] = useState(new Date());
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -14,9 +14,9 @@ export default function useCountDownHook(toDate) {
     }, []);
 
     return {
-        days: Math.round(Math.abs(Math.floor(toDate - currentdate) / (1000 * 60 * 60 * 24))),
-        hours: String(Math.floor(((toDate - currentdate) / 1000 / 60 / 60) % 24 )).padStart(2, 0),
-        minutes: String(Math.floor(((toDate - currentdate) / 1000 / 60) % 60)).padStart(2, 0),
-        seconds: String(Math.floor((toDate - currentdate) / 1000) % 60).padStart(2, 0),
+        days: Math.round(Math.abs(Math.floor(toDate - currentDate) / (1000 * 60 * 60 * 24))),
+        hours: String(Math.floor(((toDate - currentDate) / 1000 / 60 / 60) % 24 )).padStart(2, 0),
+        minutes: String(Math.floor(((toDate - currentDate) / 1000 / 60) % 60)).padStart(2, 0),
+        seconds: String(Math.floor((toDate - currentDate) / 1000) % 60).padStart(2, 0),
     };
 };

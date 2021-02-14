@@ -35,7 +35,7 @@ const Noel = () => {
                     <span>seconds</span>
                 </p>
             </div>
-            <audio autoPlay>
+            <audio controls autoPlay hidden loop>
                 <source src={mp3Sound} type="audio/mp3" />
             </audio>
         </div>

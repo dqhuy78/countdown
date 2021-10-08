@@ -5,8 +5,16 @@ import './style.scss';
 import useCountDownHook from '../../hooks/useCountDownHook';
 import mp3Sound from './x-mas.mp3';
 
+const getYear = () => {
+    const currentYear = new Date().getFullYear();
+    const thisYearXmas = new Date(currentYear, 11, 24);
+    const today = new Date();
+
+    return today > thisYearXmas ? currentYear + 1 : currentYear;
+}
+
 const Noel = () => {
-    const countdown = useCountDownHook(new Date(2020, 11, 24));
+    const countdown = useCountDownHook(new Date(getYear(), 11, 24));
     const [flakeCount] = useState(document.documentElement.clientWidth / 5);
 
     return (
@@ -35,7 +43,7 @@ const Noel = () => {
                     <span>seconds</span>
                 </p>
             </div>
-            <audio autoPlay>
+            <audio autoPlay hidden loop controls>
                 <source src={mp3Sound} type="audio/mp3" />
             </audio>
         </div>
